@@ -1,5 +1,6 @@
 import './App.css';
 import Button from './components/Button/Button';
+import JornalItem from './components/JornalItem/JornalItem';
 
 // используем функциональный подход
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <h1>Title</h1>
       <p>Description</p>
       <Button />
+      <JornalItem />
     </>
   );
   // возвращаем jsx разметку, которая потом преобразуется в js код
