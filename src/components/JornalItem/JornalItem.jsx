@@ -1,5 +1,6 @@
 import './JornalItem.css';
 
+// передаем пропсы, которые потом испльзуем для отображения в элементах
 function JornalItem({ title, date, text }) {
 	const formatDate = new Intl.DateTimeFormat('ru-RU').format(date);
 
