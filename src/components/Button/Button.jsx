@@ -1,11 +1,11 @@
 import './Button.css';
+import { useState } from 'react';
 
 function Button() {
-	let text = 'Сохранить';
+	const [text, setText] = useState('Сохранить');
 	const clicked = () => {
-		text = 'Закрыть';
-		console.log(text);
-    
+		setText('Закрыть');
+
 	};
 
 	return (
