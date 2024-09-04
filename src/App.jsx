@@ -6,6 +6,8 @@ import Body from './layouts/Body/Body';
 import Header from './components/Header/Header';
 import JornalList from './components/JornalList/JornalList';
 import JornalAddButton from './components/JornalAddButton/JornalAddButton';
+import JornalForm from './components/JornalForm/JornalForm';
+
 
 // используем функциональный подход
 function App() {
@@ -22,6 +24,8 @@ function App() {
 			text: 'Текст'
 		}
 	];
+
+
 	return (
 	// должен быть один родительский элемент <>
 		<div className='app'>
@@ -46,7 +50,7 @@ function App() {
 				</JornalList>
 			</LeftPanel>
 			<Body>
-				Body
+				<JornalForm />
 			</Body>
 		</div>
 	);
