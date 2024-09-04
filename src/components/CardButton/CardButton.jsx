@@ -1,14 +1,13 @@
 import './CardButton.css';
 
-// в сршдвкут передается дочерний элемент
-function CardButton({ children }) {
+
+function CardButton({ children, className }) {
+	const cl = 'card-button' + (className ? ' ' + className : '');
 	return (
 		<>
-			<button className="card-button">{children}</button>
+			<button className={cl}>{children}</button>
 		</>
 	);
 }
 
 export default CardButton;
-// позволяет переиспользовать кнопку под разные дочерние элементы (композиция)
-// дочерний элемент - это другие компоненты
