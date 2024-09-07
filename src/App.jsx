@@ -34,7 +34,7 @@ function App() {
 		setItems(oldItems => [...oldItems, {
 			text: item.text,
 			title: item.title,
-			date: new  Date(item.date)
+			date: new Date(item.date)
 		}]);
 	};
 
@@ -46,7 +46,7 @@ function App() {
 				<JornalAddButton />
 				<JornalList>
 					{items.map(el => {
-						<CardButton>
+						return <CardButton>
 							<JornalItem 
 								title={el.title}
 								data={el.date}
