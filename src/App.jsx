@@ -5,21 +5,36 @@ import Header from './components/Header/Header';
 import JornalList from './components/JornalList/JornalList';
 import JornalAddButton from './components/JornalAddButton/JornalAddButton';
 import JornalForm from './components/JornalForm/JornalForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
-
-const INITIAL_DATA = [
-];
+const INITIAL_DATA = [];
 
 // используем функциональный подход
 function App() {
 	const [items, setItems] = useState(INITIAL_DATA);
 
+	useEffect(() => {
+		const data = JSON.parse(localStorage.getItem('data'));
+		if (data) {
+			setItems(data.map(item => ({
+				...item,
+				date: new Date(item.date)
+			})));
+		}
+
+	}, []);
+
+	useEffect(() => {
+		if (items.length) {
+			localStorage.setItem('data', JSON.stringify(items)) ;
+		}
+	}, [items]);
+
 	const addItem = item => {
 		setItems(oldItems => [...oldItems, {
 			id: oldItems.length > 0 ? Math.max(...oldItems.map(i => i.id)) + 1 : 1,
-			text: item.text,
+			post: item.post,
 			title: item.title,
 			date: new Date(item.date)
 		}]);
