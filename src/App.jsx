@@ -1,6 +1,4 @@
 import './App.css';
-import CardButton from './components/CardButton/CardButton';
-import JornalItem from './components/JornalItem/JornalItem';
 import LeftPanel from './layouts/LeftPanel/LeftPanel';
 import Body from './layouts/Body/Body';
 import Header from './components/Header/Header';
@@ -12,19 +10,7 @@ import { useState } from 'react';
 
 
 const INITIAL_DATA = [
-	{
-		title: 'Подготовка к обновлению курсов',
-		date: new Date(),
-		text: 'Текст'
-	},
-	{
-		title: 'Поход в горы',
-		date: new Date(),
-		text: 'Текст'
-	}
 ];
-
-
 
 // используем функциональный подход
 function App() {
@@ -32,11 +18,13 @@ function App() {
 
 	const addItem = item => {
 		setItems(oldItems => [...oldItems, {
+			id: oldItems.length > 0 ? Math.max(...oldItems.map(i => i.id)) + 1 : 1,
 			text: item.text,
 			title: item.title,
 			date: new Date(item.date)
 		}]);
 	};
+
 
 	return (
 	// должен быть один родительский элемент <>
@@ -44,17 +32,7 @@ function App() {
 			<LeftPanel>
 				<Header />
 				<JornalAddButton />
-				<JornalList>
-					{items.map(el => {
-						return <CardButton>
-							<JornalItem 
-								title={el.title}
-								data={el.date}
-								text={el.text}
-							/>
-						</CardButton>;
-					})}
-				</JornalList>
+				<JornalList items={items} />
 			</LeftPanel>
 			<Body>
 				<JornalForm onSubmit={addItem}/>
