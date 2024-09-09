@@ -1,4 +1,4 @@
-import './JornalForm.css';
+import styles from './JornalForm.module.css';
 import Button from '../Button/Button';
 import { useState } from 'react';
 
@@ -41,11 +41,11 @@ function JornalForm({ onSubmit }) {
 
 	return (
 		<>
-			<form className='jornal-form' onSubmit={addJornalItem}>
-				<input type='text' name='title' className={`input ${formValidState.title? '' : 'invalid'}`}/>
-				<input type='date' name='date' className={`input ${formValidState.date? '' : 'invalid'}`}/>
+			<form className={styles['jornal-form']} onSubmit={addJornalItem}>
+				<input type='text' name='title' className={`${styles['input']} ${formValidState.title? '' : styles['invalid']}`}/>
+				<input type='date' name='date' className={`${styles['input']} ${formValidState.date? '' : styles['invalid']}`}/>
 				<input type='text' name='tag' />
-				<textarea name="post" id="" className={`input ${formValidState.post? '' : 'invalid'}`} ></textarea>
+				<textarea name="post" id="" className={`${styles['input']} ${formValidState.post? '' : styles['invalid']}`} ></textarea>
 				<Button text='Сохранить' />
 			</form>
 		</>
